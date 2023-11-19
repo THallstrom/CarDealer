@@ -108,7 +108,7 @@ namespace CarDealer.Menus
                         Console.WriteLine(await _carService.DeleteCarAsync(deleteCarNumber) ? "Car is removed from database" : "Not posible to remove car"); Console.ReadLine();
                         break;
                     case "6":
-                        var cars = await _carService.GetAllCars();
+                        var cars = await _carService.GetAllCarsAsync();
                         if (cars != null)
                         {
                             Console.Clear();
@@ -136,7 +136,7 @@ namespace CarDealer.Menus
 
         public async Task GetCars()
         {
-            var cars = await _carService.GetAllNotSoldCars();
+            var cars = await _carService.GetAllNotSoldCarsAsync();
             if (cars != null)
             {
                 Console.Clear();

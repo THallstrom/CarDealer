@@ -19,5 +19,6 @@ namespace CarDealer.Contexts
         public DbSet<ConditionEntity> Condition { get; set; }
         public DbSet<CustomerEntity> Customer { get; set; }
         public DbSet<AddressEntity> Address { get; set; }
+        public DbSet<OrderEntity> Order { get; set; }
     }
 }

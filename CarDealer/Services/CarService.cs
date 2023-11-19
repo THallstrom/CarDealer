@@ -71,7 +71,7 @@ public class CarService
         return null!;
     }
 
-    public async Task<IEnumerable<CarEntity>> GetAllCars()
+    public async Task<IEnumerable<CarEntity>> GetAllCarsAsync()
     {
         try
         {
@@ -82,7 +82,7 @@ public class CarService
         return null!;
     }
 
-    public async Task<IEnumerable<CarEntity>> GetAllNotSoldCars()
+    public async Task<IEnumerable<CarEntity>> GetAllNotSoldCarsAsync()
     {
         try
         {

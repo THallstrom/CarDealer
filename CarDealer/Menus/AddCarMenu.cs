@@ -6,6 +6,7 @@ public class AddCarMenu
 {
     public CarRegistrationForm AddCar()
     {
+        Console.Clear();
         var car = new CarRegistrationForm();
         Console.Write("Print car Maker: ");
         car.Maker = Console.ReadLine()!;

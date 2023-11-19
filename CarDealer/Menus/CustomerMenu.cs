@@ -74,7 +74,7 @@ public class CustomerMenu
                     break;
                 case "4":
                     await GetAllCustomers();
-                    var form = new DeleteCustomerForm();
+                    var form = new CustomerVerificationForm();
                     Console.Write("Print Firstname: ");
                     form.FirstName = Console.ReadLine()!;
                     Console.Write("Print Lastname: ");
@@ -99,12 +99,16 @@ public class CustomerMenu
         if (customers != null)
         {
             Console.Clear();
+            Console.WriteLine("Customer in Database");
+            Console.WriteLine(new string('-',20));
+
             foreach (var person in customers)
             {
                 Console.WriteLine($"Customer name: {person.FirstName} {person.LastName}");
                 Console.WriteLine($"Customer Address: {person.Address.StreetName}");
                 Console.WriteLine();
             }
+            Console.WriteLine("Click to get back to program");
         }
         else
             Console.WriteLine("Customer database is empty");

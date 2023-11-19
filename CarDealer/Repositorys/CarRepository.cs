@@ -28,6 +28,9 @@ public class CarRepository : Repo<CarEntity>
         return await _context.Car
             .Include(x => x.Maker)
             .Include(x => x.Model)
+            .Include(x=> x.Condition)
+            .Include(x => x.Fuel)
+            .Include(x => x.GearBox)
             .Where(x => x.IsSold == false)
             .ToListAsync();
     }

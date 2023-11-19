@@ -87,7 +87,7 @@ public class CustomerService
         return null!;
     }
 
-    public async Task<bool> DeleteCustomerAsync(DeleteCustomerForm form)
+    public async Task<bool> DeleteCustomerAsync(CustomerVerificationForm form)
     {
         try
         {

@@ -1,6 +1,6 @@
 ﻿namespace CarDealer.Models;
 
-public class DeleteCustomerForm
+public class CustomerVerificationForm
 {
     public string FirstName { get; set; } = null!;
     public string LastName { get; set;} = null!;
