@@ -18,5 +18,7 @@ namespace CarDealer.Repositorys
                 .Include(x => x.Address)
                 .ToListAsync();
         }
+
+        
     }
 }

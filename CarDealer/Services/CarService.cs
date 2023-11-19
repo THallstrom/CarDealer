@@ -98,18 +98,17 @@ public class CarService
         var entity = await _carRepository.GetAsync(x => x.RegNumber == form.RegNumber);
         if (entity != null)
         {
-            if (form.Milage != null!)
+            if (form.Milage != string.Empty!)
                 entity.Milage = form.Milage!;
-            if (form.Condition != null)
-            {
-                var cond = await _conditionRepository.GetAsync(x => x.Id == entity.ConditionId);
-                if (cond != null)
-                    cond.ConditionGrade = form.Condition;
-                cond = await _conditionRepository.UpdateAsync(cond!);
-            }
-
             if (form.IsSold != false)
                 entity.IsSold = form.IsSold;
+            var cond = await _conditionRepository.GetAsync(x => x.Id == entity.ConditionId);
+            if (cond != null)
+            {
+                if (form.Condition != string.Empty!)
+                    cond.ConditionGrade = form.Condition!;
+                cond = await _conditionRepository.UpdateAsync(cond!);
+            }
             entity = await _carRepository.UpdateAsync(entity);
             return entity ?? null!;
         }

@@ -1,4 +1,5 @@
-﻿using CarDealer.Services;
+﻿using CarDealer.Models;
+using CarDealer.Services;
 using System.Diagnostics;
 
 namespace CarDealer.Menus;
@@ -41,23 +42,35 @@ public class CustomerMenu
                     }
                     break;
                 case "2":
-                    var customers = await _customerService.ReadAllCustomerAsync();
-                    if (customers != null)
-                    {
-                        Console.Clear();
-                        foreach (var person in customers)
-                        {
-                            Console.WriteLine($"Customer name: {person.FirstName} {person.LastName}");
-                            Console.WriteLine($"Customer Address: {person.Address.StreetName}");
-                            Console.WriteLine();
-                        }
-                    }
-                    else
-                        Console.WriteLine("Customer database is empty");
+                    await GetAllCustomers();
                     Console.ReadLine();
-                                        
                     break;
                 case "3":
+                    await GetAllCustomers();
+                    var updateCustomer = new CustomerUpdateForm();
+                    Console.Write("Print FirstName: ");
+                    updateCustomer.FirstName = Console.ReadLine()!;
+                    Console.Write("Print LastName: ");
+                    updateCustomer.LastName = Console.ReadLine()!;
+                    Console.Write("Print Email: ");
+                    updateCustomer.Email = Console.ReadLine()!;
+                    Console.Write("Print Phone: ");
+                    updateCustomer.Phone = Console.ReadLine()!;
+                    Console.Write("Print Streetname: ");
+                    updateCustomer.StreetName = Console.ReadLine()!;
+                    Console.Write("Print PostalCode: ");
+                    updateCustomer.PostalCode = Console.ReadLine()!;
+                    Console.Write("Print City: ");
+                    updateCustomer.City = Console.ReadLine()!;
+                    var updatedEntity = await _customerService.UpdateAsync(updateCustomer);
+                    if (updatedEntity != null)
+                    {
+                        Console.WriteLine($"{updatedEntity.FirstName} {updatedEntity.LastName}");
+                        Console.WriteLine($"{updatedEntity.Email}");
+                    }
+                    else
+                        Console.WriteLine("No update is done...");
+                    Console.ReadLine() ;
                     break;
                 case "4":
                     break;
@@ -69,6 +82,22 @@ public class CustomerMenu
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
+    }
+    public async Task GetAllCustomers()
+    {
+        var customers = await _customerService.ReadAllCustomerAsync();
+        if (customers != null)
+        {
+            Console.Clear();
+            foreach (var person in customers)
+            {
+                Console.WriteLine($"Customer name: {person.FirstName} {person.LastName}");
+                Console.WriteLine($"Customer Address: {person.Address.StreetName}");
+                Console.WriteLine();
+            }
+        }
+        else
+            Console.WriteLine("Customer database is empty");
     }
 }
 

@@ -71,10 +71,15 @@ namespace CarDealer.Menus
                         else
                             carsUpdate.IsSold = false;
                         entity = await _carService.UpdateCarAsync(carsUpdate);
-                        Console.WriteLine($"Brand and model: {entity.Maker.Maker} {entity.Model}");
-                        Console.WriteLine($"Condition: {entity.Condition.ConditionGrade}");
-                        Console.WriteLine($"Milage: {entity.Milage}");
-                        Console.ReadLine();
+                        if (entity != null)
+                        {
+                            Console.WriteLine($"Brand and model: {entity.Maker.Maker} {entity.Model.ModelName}");
+                            Console.WriteLine($"Condition: {entity.Condition.ConditionGrade}");
+                            Console.WriteLine($"Milage: {entity.Milage}");
+                            Console.ReadLine();
+                        }
+                        else
+                            Console.WriteLine("Something went Wrong");
                         break;
                     case "4":
                         await GetCars();
