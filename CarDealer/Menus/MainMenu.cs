@@ -5,10 +5,12 @@ namespace CarDealer.Menus
     public class MainMenu
     {
         private readonly CarMenu _carMenu;
+        private readonly CustomerMenu _customerMenu;
 
-        public MainMenu(CarMenu carMenu)
+        public MainMenu(CarMenu carMenu, CustomerMenu customerMenu)
         {
             _carMenu = carMenu;
+            _customerMenu = customerMenu;
         }
 
         public async Task ShowMenu()
@@ -30,6 +32,9 @@ namespace CarDealer.Menus
                         case "1":
                             await _carMenu.ShowMenu();
                                 break;
+                            case "2":
+                            await _customerMenu.ShowMenu();
+                            break;
                     }
 
                 } while (true);

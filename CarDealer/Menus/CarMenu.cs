@@ -33,7 +33,7 @@ namespace CarDealer.Menus
                 switch (userOption)
                 {
                     case "1":
-                        var car = _addCarMenu.AddCar();
+                        var car = AddCarMenu.AddCar();
                         var entity = await _carService.AddCarAsync(car);
                         if (entity != null)
                         {

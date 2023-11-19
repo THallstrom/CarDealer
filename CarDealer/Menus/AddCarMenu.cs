@@ -4,7 +4,7 @@ namespace CarDealer.Menus;
 
 public class AddCarMenu
 {
-    public CarRegistrationForm AddCar()
+    public static CarRegistrationForm AddCar()
     {
         var car = new CarRegistrationForm();
         Console.Write("Print car Maker: ");
