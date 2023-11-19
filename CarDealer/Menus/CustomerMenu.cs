@@ -12,11 +12,10 @@ namespace CarDealer.Menus
                 Console.Clear();
                 Console.WriteLine("Hallström Car Dealer");
                 Console.WriteLine("--------------------");
-                Console.WriteLine("1. Add Car");
-                Console.WriteLine("2. Read Cars");
-                Console.WriteLine("3. Update Car");
-                Console.WriteLine("4. Sold Car");
-                Console.WriteLine("5. Delete Car");
+                Console.WriteLine("1. Add Customer");
+                Console.WriteLine("2. Read Customers");
+                Console.WriteLine("3. Update Customer");
+                Console.WriteLine("4. Remove Customer");
                 Console.Write("Make your choice: ");
                 var userOption = Console.ReadLine();
 
