@@ -73,6 +73,16 @@ public class CustomerMenu
                     Console.ReadLine() ;
                     break;
                 case "4":
+                    await GetAllCustomers();
+                    var form = new DeleteCustomerForm();
+                    Console.Write("Print Firstname: ");
+                    form.FirstName = Console.ReadLine()!;
+                    Console.Write("Print Lastname: ");
+                    form.LastName = Console.ReadLine()!;
+                    Console.Write("Print Email: ");
+                    form.Email = Console.ReadLine()!;
+                    Console.WriteLine(await _customerService.DeleteCustomerAsync(form) ? "Customer is removed" : "Customer is not removed");
+                    Console.ReadLine() ;
                     break;
                 case "5":
                     break;
