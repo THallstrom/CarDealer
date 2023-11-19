@@ -31,9 +31,6 @@ namespace CarDealer.Menus
             }
             catch (Exception ex) { Debug.WriteLine(ex.Message); }
             return null!;
-
         }
-
     }
-
 };

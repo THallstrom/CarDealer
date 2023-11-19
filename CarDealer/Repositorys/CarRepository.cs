@@ -14,12 +14,7 @@ public class CarRepository : Repo<CarEntity>
         _context = dataContext;
     }
 
-    //public override Task<bool> ExistAsync(Expression<Func<CarEntity, bool>> expression)
-    //{
-    //    return true .Where IsSold = true;
-    //}
-
-    public override async Task<IEnumerable<CarEntity>> GetAllAsync()
+        public override async Task<IEnumerable<CarEntity>> GetAllAsync()
     {
         return await _context.Car
             .Include(x => x.Maker)

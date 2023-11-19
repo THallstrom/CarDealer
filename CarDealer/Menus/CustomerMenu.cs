@@ -41,6 +41,21 @@ public class CustomerMenu
                     }
                     break;
                 case "2":
+                    var customers = await _customerService.ReadAllCustomerAsync();
+                    if (customers != null)
+                    {
+                        Console.Clear();
+                        foreach (var person in customers)
+                        {
+                            Console.WriteLine($"Customer name: {person.FirstName} {person.LastName}");
+                            Console.WriteLine($"Customer Address: {person.Address.StreetName}");
+                            Console.WriteLine();
+                        }
+                    }
+                    else
+                        Console.WriteLine("Customer database is empty");
+                    Console.ReadLine();
+                                        
                     break;
                 case "3":
                     break;

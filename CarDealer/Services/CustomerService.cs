@@ -6,18 +6,18 @@ namespace CarDealer.Services
 {
     public class CustomerService
     {
-        private readonly CustomerRepository _customerRepoitory;
+        private readonly CustomerRepository _customerRepository;
         private readonly AddressRepository _addressRepository;
 
         public CustomerService(CustomerRepository customerRepoitory, AddressRepository addressRepository)
         {
-            _customerRepoitory = customerRepoitory;
+            _customerRepository = customerRepoitory;
             _addressRepository = addressRepository;
         }
 
         public async Task <CustomerEntity> CreateCustomerAsync(CustomerRegistrationForm form)
         {
-            if(!await _customerRepoitory.ExistAsync(x => x.Email == form.Email))
+            if(!await _customerRepository.ExistAsync(x => x.Email == form.Email))
             {
                 var address = await _addressRepository.GetAsync(x => x.StreetName == form.StreetAddress && x.PostalCode == form.PostalCode);
                 address ??= await _addressRepository.CreateAsync(new AddressEntity
@@ -26,7 +26,7 @@ namespace CarDealer.Services
                         PostalCode = form.PostalCode,
                         City = form.City,
                     });
-                var customer = await _customerRepoitory.CreateAsync(new CustomerEntity
+                var customer = await _customerRepository.CreateAsync(new CustomerEntity
                 {
                     FirstName = form.FirstName,
                     LastName = form.LastName,
@@ -38,5 +38,11 @@ namespace CarDealer.Services
             }
             return null!;
         }
+
+        public async Task <IEnumerable<CustomerEntity>> ReadAllCustomerAsync()
+        {
+            var customer = await _customerRepository.GetAllAsync();
+            return customer ?? null!;            
+        }                       
     }
 }
