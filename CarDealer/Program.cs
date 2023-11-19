@@ -19,6 +19,7 @@ namespace CarDealer
             service.AddScoped<CarMenu>();
             service.AddScoped<AddCarMenu>();
             service.AddScoped<CustomerMenu>();
+            service.AddScoped<AddCustomerMenu>();
 
             service.AddScoped<CarRepository>();
             service.AddScoped<ColorRepository>();
@@ -32,6 +33,7 @@ namespace CarDealer
             service.AddScoped<AddressRepository>();
 
             service.AddScoped<CarService>();
+            service.AddScoped<CustomerService>();
 
             var sp = service.BuildServiceProvider();
             var mainMenu = sp.GetRequiredService<MainMenu>();

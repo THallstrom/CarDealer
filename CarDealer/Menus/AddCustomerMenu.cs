@@ -19,6 +19,8 @@ namespace CarDealer.Menus
                 customerRegistrationForm.LastName = Console.ReadLine()!;
                 Console.Write("Print Email: ");
                 customerRegistrationForm.Email = Console.ReadLine()!;
+                Console.Write("Print PhoneNumber: ");
+                customerRegistrationForm.Phone = Console.ReadLine()!;
                 Console.Write("Print Streetaddress: ");
                 customerRegistrationForm.StreetAddress = Console.ReadLine()!;
                 Console.Write("Print PostalCode: ");
