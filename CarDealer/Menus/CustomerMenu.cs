@@ -1,19 +1,21 @@
-﻿using System.Diagnostics;
+﻿using CarDealer.Services;
+using System.Diagnostics;
 
 namespace CarDealer.Menus;
 
 public class CustomerMenu
 {
     private readonly AddCustomerMenu _addCustomerMenu;
+    private readonly CustomerService _customerService;
 
-    public CustomerMenu(AddCustomerMenu addCustomerMenu)
+    public CustomerMenu(AddCustomerMenu addCustomerMenu, CustomerService customerService)
     {
         _addCustomerMenu = addCustomerMenu;
+        _customerService = customerService;
     }
 
     public async Task ShowMenu()
     {
-
         try
         {
             Console.Clear();
@@ -29,7 +31,14 @@ public class CustomerMenu
             switch (userOption)
             {
                 case "1":
-                    await _addCustomerMenu.
+                    var customer = _addCustomerMenu.AddCustomer();
+                    var entity = _customerService.CreateCustomerAsync(customer);
+                    if (entity != null)
+                    {
+                        Console.WriteLine("New customer in database");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine($"Customer name: {entity}");
+                    }
                     break;
                 case "2":
                     break;
@@ -37,7 +46,7 @@ public class CustomerMenu
                     break;
                 case "4":
                     break;
-                case "5": 
+                case "5":
                     break;
                 case "6":
                     break;
